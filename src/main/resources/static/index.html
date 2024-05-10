@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokémon Data Display</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="pokedex">
+    <h1>PokeDyno</h1>
+    <div id="pokemon-container">
+        <div class="pokemon-display">
+            <img id="pokemonImage" src="placeholder.jpg" alt="Image of Pokémon" class="pokemon-img">
+            <table>
+                <tr>
+                    <td>Pokémon ID:</td>
+                    <td><span id="pokemonId"></span></td>
+                </tr>
+                <tr>
+                    <td>Name:</td>
+                    <td><span id="pokemonName"></span></td>
+                </tr>
+                <tr>
+                    <td>Base Experience:</td>
+                    <td><span id="baseExperience"></span></td>
+                </tr>
+                <tr>
+                    <td>Height:</td>
+                    <td><span id="height"></span></td>
+                </tr>
+                <tr>
+                    <td>Is Default:</td>
+                    <td><span id="isDefault"></span></td>
+                </tr>
+                <tr>
+                    <td>Order:</td>
+                    <td><span id="order"></span></td>
+                </tr>
+                <tr>
+                    <td>Weight:</td>
+                    <td><span id="weight"></span></td>
+                </tr>
+            </table>
+            <p id="pokemonDescription" class="pokemon-description">Description goes here...</p>
+        </div>
+        <button onclick="fetchPokemon()">Fetch</button>
+        <button onclick="clearPokemon()">Clear</button>
+    </div>
+</div>
+</body>
+</html>
