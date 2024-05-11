@@ -2,16 +2,16 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <title>Pokémon Data Display</title>
-    <link rel="stylesheet" href="styles.css">
+    <link href="styles.css" rel="stylesheet">
 </head>
 <body>
 <div class="pokedex">
     <h1>PokeDyno</h1>
     <div id="pokemon-container">
         <div class="pokemon-display">
-            <img id="pokemonImage" src="placeholder.jpg" alt="Image of Pokémon" class="pokemon-img">
+            <img alt="Image of Pokémon" class="pokemon-img" id="pokemonImage" src="placeholder.jpg">
             <table>
                 <tr>
                     <td>Pokémon ID:</td>
@@ -42,7 +42,7 @@
                     <td><span id="weight"></span></td>
                 </tr>
             </table>
-            <p id="pokemonDescription" class="pokemon-description">Description goes here...</p>
+            <p class="pokemon-description" id="pokemonDescription">Description goes here...</p>
         </div>
         <button onclick="fetchPokemon()">Fetch</button>
         <button onclick="clearPokemon()">Clear</button>

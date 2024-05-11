@@ -4,5 +4,6 @@
       "name": "aws.dynamodb.endpoint",
       "type": "java.lang.String",
       "description": "Description for aws.dynamodb.endpoint."
-  }
-] }
+    }
+  ]
+}

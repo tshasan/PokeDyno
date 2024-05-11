@@ -1,11 +1,8 @@
 package com.pokedyno;
 
-import com.pokedyno.controller.pokeController;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.Bean;
-import org.springframework.web.reactive.function.client.WebClient;
-import software.amazon.awssdk.services.dynamodb.DynamoDbClient;
+import org.springframework.web.bind.annotation.GetMapping;
 
 @SpringBootApplication
 public class RunApplication {
@@ -15,14 +12,10 @@ public class RunApplication {
         System.out.println("App Running!");
     }
 
-    @Bean
-    public PokemonTable pokemonTable() {
-        DynamoDbClient ddbClient = DynamoDbClient.create();
-        return new PokemonTable(ddbClient, "YourTableName");
+    @GetMapping("/")
+    public String index() {
+        return "Welcome to PokeDyno!";
     }
 
-    @Bean
-    public pokeController pokeController(WebClient.Builder webClientBuilder, PokemonTable pokemonTable) {
-        return new pokeController(webClientBuilder, pokemonTable);
-    }
+
 }
