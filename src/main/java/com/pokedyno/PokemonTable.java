@@ -6,9 +6,6 @@ import software.amazon.awssdk.services.dynamodb.model.*;
 import java.util.HashMap;
 import java.util.Map;
 
-
-//just makes the dynodb with full crud functionality.
-
 public class PokemonTable {
     private final DynamoDbClient ddbClient;
     private final String tableName;
@@ -44,10 +41,11 @@ public class PokemonTable {
     }
 
     // Add a new item or update an existing item
-    public void putItem(String keyName, String keyValue, String typeKeyName, String typeValue) {
+    public void putItem(Map<String, String> itemAttributes) {
         HashMap<String, AttributeValue> itemValues = new HashMap<>();
-        itemValues.put(keyName, AttributeValue.builder().s(keyValue).build());
-        itemValues.put(typeKeyName, AttributeValue.builder().s(typeValue).build());
+        for (Map.Entry<String, String> entry : itemAttributes.entrySet()) {
+            itemValues.put(entry.getKey(), AttributeValue.builder().s(entry.getValue()).build());
+        }
 
         PutItemRequest request = PutItemRequest.builder()
                 .tableName(tableName)
@@ -60,6 +58,7 @@ public class PokemonTable {
             System.err.println("Failed to put item: " + e.getMessage());
         }
     }
+
 
     // Update specific attributes of an item
     public void updateItem(String keyName, String keyValue, String typeKeyName, String newValue) {
@@ -117,5 +116,12 @@ public class PokemonTable {
         } catch (DynamoDbException e) {
             System.err.println("Failed to delete item: " + e.getMessage());
         }
+    }
+    public void storePokemonData(String id, String name, String imageUrl) {
+        Map<String, String> itemAttributes = new HashMap<>();
+        itemAttributes.put("id", id);
+        itemAttributes.put("name", name);
+        itemAttributes.put("imageUrl", imageUrl);
+        putItem(itemAttributes);
     }
 }

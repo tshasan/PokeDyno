@@ -3,6 +3,7 @@ package com.pokedyno.controller;
 import com.pokedyno.model.Pokemon;
 import com.pokedyno.model.PokemonDetail;
 import com.pokedyno.model.PokemonList;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,6 +12,7 @@ import org.springframework.web.reactive.function.client.ExchangeStrategies;
 import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
+import com.pokedyno.PokemonTable;
 
 import java.util.List;
 
@@ -18,16 +20,18 @@ import java.util.List;
 public class pokeController {
     private static final String POKEMON_API_URL = "https://pokeapi.co/api/v2";
     private final WebClient webClient;
+    private final PokemonTable pokemonTable;
 
-    public pokeController(WebClient.Builder webClientBuilder) {
+    public pokeController(WebClient.Builder webClientBuilder, PokemonTable pokemonTable) {
         ExchangeStrategies strategies = ExchangeStrategies.builder()
                 .codecs(configurer -> configurer.defaultCodecs().maxInMemorySize(10 * 1024 * 1024)) // 10MB
                 .build();
 
-        webClient = webClientBuilder
+        this.webClient = webClientBuilder
                 .baseUrl(POKEMON_API_URL)
                 .exchangeStrategies(strategies)
                 .build();
+        this.pokemonTable = pokemonTable;
     }
 
     /**
@@ -75,6 +79,9 @@ public class pokeController {
                 .map(pokemonDetail -> {
                     pokemon.setId(pokemonDetail.getId());
                     pokemon.setImage(pokemonDetail.getSprites().getOther().getOfficialArtwork().getFrontDefault());
+
+                    pokemonTable.storePokemonData(pokemonDetail.getId(), pokemonDetail.getName(), pokemon.getImage());
+
                     return pokemon;
                 });
     }
