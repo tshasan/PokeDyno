@@ -13,7 +13,7 @@
     <div id="pokemon-container">
         <form id="pokemonSearchForm">
             <label for="pokemonIdInput">Enter Pokémon ID:</label>
-            <input type="number" id="pokemonIdInput" required>
+            <input id="pokemonIdInput" required type="number">
             <button type="submit">Fetch</button>
         </form>
         <div class="pokemon-display">
@@ -46,6 +46,14 @@
                 <tr>
                     <td>Weight:</td>
                     <td><span id="weight"></span></td>
+                </tr>
+                <tr>
+                    <td>Source:</td>
+                    <td><span id="dataSource"></span></td>
+                </tr>
+                <tr>
+                    <td>Fetch Time:</td>
+                    <td><span id="fetchTime"></span></td>
                 </tr>
             </table>
             <p class="pokemon-description" id="pokemonDescription">Description goes here...</p>

@@ -1,9 +1,7 @@
 package com.pokedyno;
 
-import com.pokedyno.PokeAPIService;
-import com.pokedyno.Pokemon;
-import org.springframework.http.ResponseEntity;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
@@ -24,7 +22,10 @@ public class PokemonController {
             Pokemon pokemon = pokeAPIService.fetchPokemon(pokemonId);
             return ResponseEntity.ok(pokemon);
         } catch (Exception e) {
+            e.printStackTrace(); //logging
             return ResponseEntity.badRequest().body("Failed to fetch Pokémon: " + e.getMessage());
         }
     }
 }
+
+

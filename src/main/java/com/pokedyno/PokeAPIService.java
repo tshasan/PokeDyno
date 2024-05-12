@@ -14,9 +14,9 @@ import java.util.Optional;
 
 @Service
 public class PokeAPIService {
+    private static final Logger LOGGER = LoggerFactory.getLogger(PokeAPIService.class);
     private final RestTemplate restTemplate;
     private final DynamoDBPokemonRepository pokemonRepository;
-    private static final Logger LOGGER = LoggerFactory.getLogger(PokeAPIService.class);
 
 
     @Autowired
