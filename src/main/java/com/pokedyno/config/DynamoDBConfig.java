@@ -42,18 +42,18 @@ public class DynamoDBConfig {
     public DynamoDbClient dynamoDbClient() {
         return DynamoDbClient.builder()
                 .endpointOverride(URI.create("http://localhost:8000"))
-                .region(Region.US_WEST_2)
+                .region(Region.US_WEST_1)
                 .credentialsProvider(DefaultCredentialsProvider.create())
                 .build();
     }
 
-    // The dynamoDbClient is injected in the enhanced client
     @Bean
     public DynamoDbEnhancedClient dynamoDbEnhancedClient(DynamoDbClient dynamoDbClient) {
         return DynamoDbEnhancedClient.builder()
                 .dynamoDbClient(dynamoDbClient)
                 .build();
     }
+
 }
 
 

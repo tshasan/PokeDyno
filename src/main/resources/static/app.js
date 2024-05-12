@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 function fetchPokemon(pokemonId) {
-    fetch(`/pokemon/${pokemonId}`)
+    fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonId}`)
         .then(response => {
             if (!response.ok) {
                 throw new Error('Network response was not ok: ' + response.status);
@@ -16,7 +16,21 @@ function fetchPokemon(pokemonId) {
             return response.json();
         })
         .then(data => {
-            displayPokemon(data);
+            console.log('JSON Response:', data); // Log the JSON data structure
+            // Map data to fit the structure of PokeAPI v2
+            const pokemon = {
+                id: data.id,
+                name: data.name,
+                base_experience: data.base_experience,
+                height: data.height,
+                weight: data.weight,
+                is_default: data.is_default,
+                order: data.order,
+                sprites: {
+                    front_default: data.sprites.front_default
+                }
+            };
+            displayPokemon(pokemon);
         })
         .catch(error => {
             console.error('Error fetching data:', error);
