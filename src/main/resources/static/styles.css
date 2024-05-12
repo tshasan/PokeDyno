@@ -1,0 +1,70 @@
+/* Overall body and background styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 20px;
+}
+
+/* Pokedex container styles */
+.pokedex {
+    background-color: white;
+    border: 1px solid #ccc;
+    box-shadow: 0 0 10px #ccc;
+    padding: 20px;
+    margin: auto;
+    width: 80%;
+    max-width: 600px;
+}
+
+/* Styles for the Pokemon display section */
+.pokemon-display {
+    text-align: center;
+}
+
+/* Styles for the Pokemon image */
+.pokemon-img {
+    width: 150px;
+    height: 150px;
+    margin: 20px auto;
+}
+
+/* Table styling for Pokemon details */
+table {
+    margin: 20px auto;
+    width: 90%;
+    border-collapse: collapse;
+}
+
+td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+/* Button styling */
+button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+/* Responsive media query */
+@media (max-width: 600px) {
+    .pokedex {
+        width: 100%;
+        padding: 10px;
+    }
+
+    button {
+        width: 100%;
+    }
+}

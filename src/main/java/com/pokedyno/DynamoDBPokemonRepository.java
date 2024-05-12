@@ -1,5 +1,6 @@
 package com.pokedyno;
 
+import org.springframework.stereotype.Repository;
 import software.amazon.awssdk.enhanced.dynamodb.DynamoDbEnhancedClient;
 import software.amazon.awssdk.enhanced.dynamodb.DynamoDbTable;
 import software.amazon.awssdk.enhanced.dynamodb.Key;
@@ -7,6 +8,7 @@ import software.amazon.awssdk.enhanced.dynamodb.TableSchema;
 
 import java.util.Optional;
 
+@Repository
 public class DynamoDBPokemonRepository implements PokemonRepository {
     private final DynamoDbTable<Pokemon> pokemonTable;
 
@@ -35,3 +37,4 @@ public class DynamoDBPokemonRepository implements PokemonRepository {
         return pokemonTable.scan().items();
     }
 }
+
