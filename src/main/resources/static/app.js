@@ -33,8 +33,6 @@ function displayPokemon(pokemon) {
         // Provide a placeholder or a default image if no sprite is available
         document.getElementById('pokemonImage').src = 'https://placehold.co/150x100';
     }
-    console.log(pokemon);
-    console.log(pokemon.default);
 
     // Setting other properties
     document.getElementById('pokemonId').textContent = pokemon.id || 'N/A';
