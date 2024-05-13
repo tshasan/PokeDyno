@@ -7,9 +7,11 @@ import software.amazon.awssdk.enhanced.dynamodb.mapper.annotations.DynamoDbParti
 public class Pokemon {
     private String id;
     private String name;
+    private boolean isDefault;
     private int baseExperience;
     private int height;
     private int weight;
+    private String imageUrl;
 
     @DynamoDbPartitionKey
     public String getId() {
@@ -26,6 +28,14 @@ public class Pokemon {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public boolean isDefault() {
+        return isDefault;
+    }
+
+    public void setIsDefault(boolean isDefault) {
+        this.isDefault = isDefault;
     }
 
     public int getBaseExperience() {
@@ -50,5 +60,13 @@ public class Pokemon {
 
     public void setWeight(int weight) {
         this.weight = weight;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 }
