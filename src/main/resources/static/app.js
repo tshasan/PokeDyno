@@ -31,7 +31,7 @@ function displayPokemon(pokemon) {
         document.getElementById('pokemonImage').src = pokemon.sprites.front_default;
     } else {
         // Provide a placeholder or a default image if no sprite is available
-        document.getElementById('pokemonImage').src = '/placeholder.png';
+        document.getElementById('pokemonImage').src = 'https://placehold.co/150x100';
     }
 
     // Setting other properties
@@ -47,7 +47,7 @@ function displayPokemon(pokemon) {
 
 
 function clearPokemon() {
-    document.getElementById('pokemonImage').src = '/placeholder.jpg';
+    document.getElementById('pokemonImage').src = 'https://placehold.co/150x100';
     document.querySelectorAll('#pokemon-container span').forEach(span => span.textContent = '');
     document.getElementById('pokemonDescription').textContent = 'Description goes here...';
 }
