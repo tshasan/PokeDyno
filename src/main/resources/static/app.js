@@ -30,8 +30,7 @@ function displayPokemon(pokemon) {
     if (pokemon.sprites && pokemon.sprites.front_default) {
         document.getElementById('pokemonImage').src = pokemon.sprites.front_default;
     } else {
-        // Provide a placeholder or a default image if no sprite is available
-        document.getElementById('pokemonImage').src = '/placeholder.png';
+        document.getElementById('pokemonImage').src = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/'+ pokemon.id +'.png';
     }
 
     // Setting other properties
