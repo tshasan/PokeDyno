@@ -49,17 +49,21 @@ public class PokeAPIService {
             JsonNode root = mapper.readTree(json);
             String id = root.get("id").asText();
             String name = root.get("name").asText();
+            boolean isDefault = root.get("is_default").asBoolean();
             int baseExperience = root.get("base_experience").asInt();
             int height = root.get("height").asInt();
             int weight = root.get("weight").asInt();
+            String imageUrl = root.get("sprites").get("other").get("official-artwork").get("front_default").asText();
 
             // Create Pokemon instance
             Pokemon pokemon = new Pokemon();
             pokemon.setId(id);
             pokemon.setName(name);
+            pokemon.setIsDefault(isDefault);
             pokemon.setBaseExperience(baseExperience);
             pokemon.setHeight(height);
             pokemon.setWeight(weight);
+            pokemon.setImageUrl(imageUrl);
 
             return pokemon;
         } catch (IOException e) {

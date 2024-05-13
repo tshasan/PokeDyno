@@ -27,27 +27,28 @@ function fetchPokemon(pokemonId) {
 
 function displayPokemon(pokemon) {
     // Check if 'sprites' and 'front_default' exist before attempting to access
-    if (pokemon.sprites && pokemon.sprites.front_default) {
-        document.getElementById('pokemonImage').src = pokemon.sprites.front_default;
+    if (pokemon.imageUrl) {
+        document.getElementById('pokemonImage').src = pokemon.imageUrl;
     } else {
         // Provide a placeholder or a default image if no sprite is available
         document.getElementById('pokemonImage').src = 'https://placehold.co/150x100';
     }
+    console.log(pokemon);
+    console.log(pokemon.default);
 
     // Setting other properties
     document.getElementById('pokemonId').textContent = pokemon.id || 'N/A';
     document.getElementById('pokemonName').textContent = pokemon.name || 'N/A';
-    document.getElementById('baseExperience').textContent = pokemon.base_experience || 'N/A';
+    document.getElementById('baseExperience').textContent = pokemon.baseExperience || 'N/A';
     document.getElementById('height').textContent = pokemon.height || 'N/A';
-    document.getElementById('isDefault').textContent = pokemon.is_default ? 'Yes' : 'No';
-    document.getElementById('order').textContent = pokemon.order || 'N/A';
+    document.getElementById('isDefault').textContent = pokemon.default ? 'Yes' : 'No';
     document.getElementById('weight').textContent = pokemon.weight || 'N/A';
     document.getElementById('pokemonDescription').textContent = 'Data retrieved from PokeAPI.';
 }
 
 
 function clearPokemon() {
-    document.getElementById('pokemonImage').src = 'https://placehold.co/150x100';
+    document.getElementById('pokemonImage').src = '';
     document.querySelectorAll('#pokemon-container span').forEach(span => span.textContent = '');
     document.getElementById('pokemonDescription').textContent = 'Description goes here...';
 }
