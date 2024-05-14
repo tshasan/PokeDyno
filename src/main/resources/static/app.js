@@ -33,13 +33,12 @@ function displayPokemon(pokemon) {
         // Provide a placeholder or a default image if no sprite is available
         document.getElementById('pokemonImage').src = 'https://placehold.co/150x100';
     }
-
     // Setting other properties
     document.getElementById('pokemonId').textContent = pokemon.id || 'N/A';
     document.getElementById('pokemonName').textContent = pokemon.name || 'N/A';
     document.getElementById('baseExperience').textContent = pokemon.baseExperience || 'N/A';
     document.getElementById('height').textContent = pokemon.height || 'N/A';
-    document.getElementById('isDefault').textContent = pokemon.default ? 'Yes' : 'No';
+    document.getElementById('isDefault').textContent = pokemon.isDefault ? 'Yes' : 'No';
     document.getElementById('weight').textContent = pokemon.weight || 'N/A';
     document.getElementById('pokemonDescription').textContent = 'Data retrieved from PokeAPI.';
 }
