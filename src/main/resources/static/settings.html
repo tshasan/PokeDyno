@@ -10,7 +10,11 @@
 </head>
 <body>
 <div class="container my-5">
-    <h1>Pokémon Internal Database</h1>
+    <header class="mb-4 d-flex justify-content-between align-items-center">
+        <h1>Pokémon Internal Database</h1>
+        <button id="goToIndex" class="btn btn-primary">Go to Index</button>
+    </header>
+
     <div class="my-4">
         <table class="table table-hover">
             <thead>
@@ -25,8 +29,8 @@
             </tbody>
         </table>
     </div>
+
     <button class="btn btn-secondary" id="refreshButton">Refresh List</button>
-    <button class="btn btn-primary mt-3" id="goToIndex">Go to Index</button>
 </div>
 
 <!-- Bootstrap and Custom Scripts -->
