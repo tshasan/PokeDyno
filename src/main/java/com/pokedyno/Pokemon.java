@@ -30,7 +30,7 @@ public class Pokemon {
         this.name = name;
     }
 
-    public boolean isDefault() {
+    public boolean getIsDefault() {
         return isDefault;
     }
 
