@@ -15,22 +15,11 @@
         <button id="goToIndex" class="btn btn-primary">Go to Index</button>
     </header>
 
-    <div class="my-4">
-        <table class="table table-hover">
-            <thead>
-            <tr>
-                <th>ID</th>
-                <th>Name</th>
-                <th>Actions</th>
-            </tr>
-            </thead>
-            <tbody id="pokemonList">
-            <!-- Pokémon entries will be dynamically filled here -->
-            </tbody>
-        </table>
-    </div>
+    <button class="btn btn-secondary mb-4" id="refreshButton">Refresh List</button>
 
-    <button class="btn btn-secondary" id="refreshButton">Refresh List</button>
+    <div id="pokemonList" class="row g-3 row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4">
+        <!-- Pokémon entries will be dynamically filled here -->
+    </div>
 </div>
 
 <!-- Bootstrap and Custom Scripts -->
