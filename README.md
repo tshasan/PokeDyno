@@ -9,20 +9,26 @@ PokeDyno is a Spring Boot application that demonstrates the integration of Dynam
 - **Delete Pokémon:** Remove a Pokémon entry from the database by its ID.
 
 ## Setup and Installation
-1. ### Clone the Repository:
+1. ### Install and configure AWS CLI
+   - Official installation guide [here](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html)
+   - You must configure the aws cli before proceeding and set the region to us-west-1 this can be configured in `DynamoDBConfig.java`
+   ```bash
+   aws configure
+   ``` 
+2. ### Clone the Repository:
    ```bash
    git clone git@github.com:tshasan/PokeDyno.git
    cd PokeDyno
    ```
-2. ### Build Application
+3. ### Build Application
    ```bash
    ./mvnw clean install
    ```
-3. ### Run the application
+4. ### Run the application
    ```bash
    ./mvnw spring-boot:run
    ```
-4. ### Accessing the application
+5. ### Accessing the application
    Navigate to http://localhost:8080 to access the application
 
 ## Frameworks used
