@@ -1,3 +1,12 @@
+const id = document.getElementById('pokemonId');
+const name = document.getElementById('pokemonName');
+const baseExperience = document.getElementById('baseExperience');
+const height = document.getElementById('height');
+const isDefault = document.getElementById('isDefault');
+const weight = document.getElementById('weight');
+const imageUrl = document.getElementById('pokemonImage');
+const description = document.getElementById('pokemonDescription');
+
 document.addEventListener('DOMContentLoaded', function () {
     const form = document.getElementById('pokemonSearchForm');
     form.addEventListener('submit', function (event) {
@@ -20,33 +29,37 @@ function fetchPokemon(pokemonId) {
         })
         .catch(error => {
             console.error('Error fetching data:', error);
-            document.getElementById('pokemonDescription').textContent = 'Failed to fetch data. Error: ' + error.message;
+            description.textContent = 'Failed to fetch data. Error: ' + error.message;
         });
 }
 
 
 function displayPokemon(pokemon) {
-    // Check if 'sprites' and 'front_default' exist before attempting to access
-    if (pokemon.sprites && pokemon.sprites.front_default) {
-        document.getElementById('pokemonImage').src = pokemon.sprites.front_default;
-    } else {
-        document.getElementById('pokemonImage').src = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/'+ pokemon.id +'.png';
-    }
+    // Setting properties
+    id.textContent = pokemon.id || 'N/A';
+    name.textContent = pokemon.name || 'N/A';
+    baseExperience.textContent = pokemon.baseExperience || 'N/A';
+    height.textContent = pokemon.height || 'N/A';
+    isDefault.textContent = pokemon.isDefault ? 'Yes' : 'No';
+    weight.textContent = pokemon.weight || 'N/A';
+    description.textContent = 'Data retrieved from PokeAPI.';
 
-    // Setting other properties
-    document.getElementById('pokemonId').textContent = pokemon.id || 'N/A';
-    document.getElementById('pokemonName').textContent = pokemon.name || 'N/A';
-    document.getElementById('baseExperience').textContent = pokemon.base_experience || 'N/A';
-    document.getElementById('height').textContent = pokemon.height || 'N/A';
-    document.getElementById('isDefault').textContent = pokemon.is_default ? 'Yes' : 'No';
-    document.getElementById('order').textContent = pokemon.order || 'N/A';
-    document.getElementById('weight').textContent = pokemon.weight || 'N/A';
-    document.getElementById('pokemonDescription').textContent = 'Data retrieved from PokeAPI.';
+    // Check if 'sprites' and 'front_default' exist before attempting to access
+    if (pokemon.imageUrl) {
+        imageUrl.src = pokemon.imageUrl;
+    } else {
+        // Provide a placeholder or a default image if no sprite is available
+        imageUrl.src = 'https://placehold.co/150x100';
+    }
 }
 
-
 function clearPokemon() {
-    document.getElementById('pokemonImage').src = '/placeholder.jpg';
-    document.querySelectorAll('#pokemon-container span').forEach(span => span.textContent = '');
-    document.getElementById('pokemonDescription').textContent = 'Description goes here...';
+    id.textContent = "ID";
+    name.textContent = "Pokemon Name";
+    baseExperience.textContent = "";
+    height.textContent = "";
+    isDefault.textContent = "";
+    weight.textContent = "";
+    imageUrl.src = "";
+    description.textContent = "Description goes here...";
 }
