@@ -49,7 +49,7 @@ function displayPokemon(pokemon) {
         // Provide a placeholder or a default image if no sprite is available
         imageUrl.src = 'https://placehold.co/150x100';
     }
-    description.textContent = `Data retrieved from ${pokemon.dataSource === 'database' ? 'Database' : 'PokeAPI'}.`;
+    description.textContent = `Data retrieved from ${pokemon.isDataFromDb ? 'Database' : 'PokeAPI'}.`;
 }
 
 function clearPokemon() {

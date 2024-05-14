@@ -29,14 +29,17 @@ public class PokeAPIService {
         // First check if Pokémon is in DynamoDB
         Optional<Pokemon> maybePokemon = pokemonRepository.findById(pokemonId);
         if (maybePokemon.isPresent()) {
+            Pokemon pokemon = maybePokemon.get();
+            pokemon.setDataFromDb(true);
             LOGGER.info("Pokemon with ID {} found in the database.", pokemonId);
-            return maybePokemon.get();
+            return pokemon;
         }
 
         // If not, fetch from PokeAPI and store in DynamoDB
         String url = "https://pokeapi.co/api/v2/pokemon/" + pokemonId;
         ResponseEntity<String> response = restTemplate.getForEntity(url, String.class);
         Pokemon pokemon = parsePokemon(response.getBody());
+        pokemon.setDataFromDb(false);
         pokemonRepository.save(pokemon);
         LOGGER.info("Pokemon with ID {} fetched from PokeAPI and stored in the database.", pokemonId);
         return pokemon;
