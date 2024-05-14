@@ -55,7 +55,7 @@ public class PokeAPIService {
             int weight = root.get("weight").asInt();
             String imageUrl = root.get("sprites").get("other").get("official-artwork").get("front_default").asText();
 
-            // Create Pokemon instance
+            // Create Pokémon instance
             Pokemon pokemon = new Pokemon();
             pokemon.setId(id);
             pokemon.setName(name);
