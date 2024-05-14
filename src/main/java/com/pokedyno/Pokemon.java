@@ -12,6 +12,7 @@ public class Pokemon {
     private int height;
     private int weight;
     private String imageUrl;
+    private String dataSource;
 
     @DynamoDbPartitionKey
     public String getId() {
@@ -68,5 +69,13 @@ public class Pokemon {
 
     public void setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
+    }
+
+    public String getDataSource() {
+        return dataSource;
+    }
+
+    public void setDataSource(String dataSource) {
+        this.dataSource = dataSource;
     }
 }

@@ -42,8 +42,6 @@ function displayPokemon(pokemon) {
     height.textContent = pokemon.height || 'N/A';
     isDefault.textContent = pokemon.isDefault ? 'Yes' : 'No';
     weight.textContent = pokemon.weight || 'N/A';
-    description.textContent = 'Data retrieved from PokeAPI.';
-
     // Check if 'sprites' and 'front_default' exist before attempting to access
     if (pokemon.imageUrl) {
         imageUrl.src = pokemon.imageUrl;
@@ -51,6 +49,7 @@ function displayPokemon(pokemon) {
         // Provide a placeholder or a default image if no sprite is available
         imageUrl.src = 'https://placehold.co/150x100';
     }
+    description.textContent = `Data retrieved from ${pokemon.dataSource === 'database' ? 'Database' : 'PokeAPI'}.`;
 }
 
 function clearPokemon() {
