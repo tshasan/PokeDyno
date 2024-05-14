@@ -9,30 +9,26 @@ const description = document.getElementById('pokemonDescription');
 
 document.addEventListener('DOMContentLoaded', function () {
     const form = document.getElementById('pokemonSearchForm');
-    form.addEventListener('submit', function (event) {
+    form.addEventListener('submit', async function (event) {
         event.preventDefault();
         const pokemonId = document.getElementById('pokemonIdInput').value;
-        fetchPokemon(pokemonId);
+        await fetchPokemon(pokemonId);
     });
 });
 
-function fetchPokemon(pokemonId) {
-    fetch(`/pokemon/${pokemonId}`)
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Network response was not ok: ' + response.status);
-            }
-            return response.json();
-        })
-        .then(data => {
-            displayPokemon(data);
-        })
-        .catch(error => {
-            console.error('Error fetching data:', error);
-            description.textContent = 'Failed to fetch data. Error: ' + error.message;
-        });
+async function fetchPokemon(pokemonId) {
+    try {
+        const response = await fetch(`/pokemon/${pokemonId}`);
+        if (!response.ok) {
+            throw new Error('Network response was not ok: ' + response.status);
+        }
+        const data = await response.json();
+        displayPokemon(data);
+    } catch {
+        console.error('Error fetching data:', error);
+        description.textContent = 'Failed to fetch data. Error: ' + error.message;
+    }
 }
-
 
 function displayPokemon(pokemon) {
     // Setting properties
@@ -49,7 +45,7 @@ function displayPokemon(pokemon) {
         // Provide a placeholder or a default image if no sprite is available
         imageUrl.src = 'https://placehold.co/150x100';
     }
-    description.textContent = `Data retrieved from ${pokemon.dataSource === 'database' ? 'Database' : 'PokeAPI'}.`;
+    description.textContent = `Data retrieved from ${pokemon.isDataFromDb ? 'Database' : 'PokeAPI'}.`;
 }
 
 function clearPokemon() {
@@ -62,3 +58,11 @@ function clearPokemon() {
     imageUrl.src = "";
     description.textContent = "Description goes here...";
 }
+
+/**
+ * This function is called when the "Go to Index" button is clicked.
+ * It redirects the user to the index page.
+ */
+document.getElementById('goToSettings').addEventListener('click', function () {
+    window.location.href = 'settings.html';
+});

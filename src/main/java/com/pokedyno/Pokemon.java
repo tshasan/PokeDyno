@@ -12,7 +12,7 @@ public class Pokemon {
     private int height;
     private int weight;
     private String imageUrl;
-    private String dataSource;
+    private boolean isDataFromDb;
 
     @DynamoDbPartitionKey
     public String getId() {
@@ -71,11 +71,11 @@ public class Pokemon {
         this.imageUrl = imageUrl;
     }
 
-    public String getDataSource() {
-        return dataSource;
+    public boolean getIsDataFromDb() {
+        return isDataFromDb;
     }
 
-    public void setDataSource(String dataSource) {
-        this.dataSource = dataSource;
+    public void setDataFromDb(boolean isDataFromDb) {
+        this.isDataFromDb = isDataFromDb;
     }
 }

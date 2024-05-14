@@ -10,23 +10,16 @@
 </head>
 <body>
 <div class="container my-5">
-    <h1>Pokémon Internal Database</h1>
-    <div class="my-4">
-        <table class="table table-hover">
-            <thead>
-            <tr>
-                <th>ID</th>
-                <th>Name</th>
-                <th>Actions</th>
-            </tr>
-            </thead>
-            <tbody id="pokemonList">
-            <!-- Pokémon entries will be dynamically filled here -->
-            </tbody>
-        </table>
+    <header class="mb-4 d-flex justify-content-between align-items-center">
+        <h1>Pokémon Internal Database</h1>
+        <button id="goToIndex" class="btn btn-primary">Go to Index</button>
+    </header>
+
+    <button class="btn btn-secondary mb-4" id="refreshButton">Refresh List</button>
+
+    <div id="pokemonList" class="row g-3 row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4">
+        <!-- Pokémon entries will be dynamically filled here -->
     </div>
-    <button class="btn btn-secondary" id="refreshButton">Refresh List</button>
-    <button class="btn btn-primary mt-3" id="goToIndex">Go to Index</button>
 </div>
 
 <!-- Bootstrap and Custom Scripts -->
@@ -35,10 +28,5 @@
         src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js">
 </script>
 <script src="settings.js"></script>
-<script>
-    document.getElementById('goToIndex').addEventListener('click', function () {
-        window.location.href = 'index.html';
-    });
-</script>
 </body>
 </html>
